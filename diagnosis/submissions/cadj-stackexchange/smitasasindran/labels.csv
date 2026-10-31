@@ -17,7 +17,7 @@ d55a3d15fa97fb05,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""use
 d1f1e0a27b116e2c,full,fix,B3,<issue_start> + <issue_comment>,,long url but not spam
 e41552c03df638c4,full,fix,B3,<issue_start> + <issue_comment>,,"""include"" got cleaned up. Keep anyway, code snippet still valid. url inside <http>"
 ddbdd572cf304828,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line "".<issue_comment>username_1: You have a null-pointer access s"" at offset 637 is duplicated from previous doc e41552c03df638c4",,"url  inside <>, some long urls"
-32407cff5d9572ab,full,fix,B3,<issue_start> + <issue_comment>,,urls
+32407cff5d9572ab,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> at offset 410,,urls
 7ef89b9a54844e42,full,fix,B3,<issue_start> + <issue_comment>,,
 1a27f25c1da5f427,full,fix,B3,<issue_start> + <issue_comment>,,urls
 9bcd93fe008715e7,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line "".<issue_comment>username_1: > "" at offset 1638 is duplicated from previous doc 1a27f25c1da5f427",,urls
@@ -53,11 +53,11 @@ fd7ca38dd23da802,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | line ""
 03fb4983971b0372,full,fix,B3,<issue_start> + <issue_comment>,,"valid urls, one inside <> | <https://github.com/gruntjs/grunt-contrib-connect#livereload>"
 123bb53ea41cdf82,full,fix,B3,<issue_start> + <issue_comment>,,urls
 5d6538f4a5c3009e,full,fix,B3;B4,"<issue_start> + <issue_comment> | line ""<PASSWORD>"" ×3 at 1242",,PII placeholder. <PASSWORD> is inside code
-5a9016952491a520,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 329 is duplicated from previous doc 5d6538f4a5c3009e",,PII placeholder. <PASSWORD> is inside code. Not marking as B2
-18ba740b67dcb026,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 1432 is duplicated from previous doc 5a9016952491a520",,"PII placeholder. <PASSWORD> is inside code. Not marking as B2. One entry looks wrong: password = <PASSWORD>(word,salt);"
-583cfb8f3af34273,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 353 is duplicated from previous doc 18ba740b67dcb026",,PII placeholder. <PASSWORD> is inside code
-d8172b44fdeb667d,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 585 is duplicated from previous doc 583cfb8f3af34273",,PII placeholder. <PASSWORD> is inside code
-743ec90e7267fa0f,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 6026 is duplicated from previous doc d8172b44fdeb667d",,"PII placeholder. <PASSWORD> is inside code. Not marking as B2. One entry looks wrong: password = <PASSWORD>(word,salt);"
+5a9016952491a520,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 329 is duplicated from previous doc 5d6538f4a5c3009e | <PASSWORD> at offset 1461",,PII placeholder. <PASSWORD> is inside code. Not marking as B2
+18ba740b67dcb026,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 1432 is duplicated from previous doc 5a9016952491a520 | <PASSWORD> ×2 at 2513, 2569",,"PII placeholder. <PASSWORD> is inside code. Not marking as B2. One entry looks wrong: password = <PASSWORD>(word,salt);"
+583cfb8f3af34273,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 353 is duplicated from previous doc 18ba740b67dcb026 | <PASSWORD> at offset 1485",,PII placeholder. <PASSWORD> is inside code
+d8172b44fdeb667d,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 585 is duplicated from previous doc 583cfb8f3af34273 | <PASSWORD> at offset 1717",,PII placeholder. <PASSWORD> is inside code
+743ec90e7267fa0f,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: strcat is for concatenating *strings* not 2 sepa"" at offset 6026 is duplicated from previous doc d8172b44fdeb667d | <PASSWORD> ×2 at 7107, 7163",,"PII placeholder. <PASSWORD> is inside code. Not marking as B2. One entry looks wrong: password = <PASSWORD>(word,salt);"
 d968457be7a57bce,full,fix,B3,<issue_start> + <issue_comment>,,
 56e6ff75b0d69716,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: That is because prompt returns a string, you hav"" at offset 745 is duplicated from previous doc d968457be7a57bce",,
 799d208dc362a4b1,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: That is because prompt returns a string, you hav"" at offset 717 is duplicated from previous doc 56e6ff75b0d69716",,
@@ -92,7 +92,7 @@ ccb1e471c5072235,full,fix,B3,<issue_start> + <issue_comment>,,url
 1981dba468f886f9,full,fix,B3,<issue_start> + <issue_comment>,,
 bd72d6a12e7936b5,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: Try to use this when you set the viewData object"" at offset 628 is duplicated from previous doc 1981dba468f886f9",,
 f2fabeb001386f58,full,fix,B3,<issue_start> + <issue_comment>,,
-054edebe060d8fb9,full,fix,B3,<issue_start> + <issue_comment>,,url
+054edebe060d8fb9,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 5438,,url
 8deb40c5a0a4c245,full,fix,B3,<issue_start> + <issue_comment>,,
 3d4b6eafad477d19,full,fix,B3,<issue_start> + <issue_comment>,,url
 8bdc0d08408cbe8f,full,fix,B3;C2,<issue_start> + <issue_comment> | line “![](testimg.jpg)” x5 at 334,,repeating line is small
@@ -177,7 +177,7 @@ eac3888515d9f44c,full,fix,B3,<issue_start> + <issue_comment>,,
 89cbb4a40b49a0fa,full,fix,B3,<issue_start> + <issue_comment>,,
 c553a17df597cd4f,full,fix,B3,<issue_start> + <issue_comment>,,
 18ccebc82aac0de6,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | line "" });"" at offset 1266 | line ""username_1: By process (in the JSF specification""  at offset 1685 is duplicated from previous document c553a17df597cd4f",,"""});"" is outside the code fence. Duplicate section from previous document is unrelated to current document"
-f8c2cba47b3d03f1,full,fix,B2;B3,<issue_start> + <issue_comment> | <PASSWORD> ×1 at offset 4113 + <NAME> ×2 at offset 4711,,<PASSWORD> is inside code. <NAME> is in text.
+f8c2cba47b3d03f1,full,fix,B2;B3;B4,<issue_start> + <issue_comment> | <PASSWORD> ×1 at offset 4113 + <NAME> ×2 at offset 4711,,<PASSWORD> is inside code. <NAME> is in text.
 362f0f37f4ea8e9d,full,fix,B3,<issue_start> + <issue_comment>,,
 6276e9a06f67145a,full,fix,B3,<issue_start> + <issue_comment>,,
 1aa8f21312ae7d00,full,fix,B3,<issue_start> + <issue_comment>,,
@@ -415,9 +415,9 @@ e02c60426c593d78,full,fix,B3,<issue_start> + <issue_comment>,,
 c98131a17713f49c,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: Need to add drawable in button right.I think the"" at offset 789 is duplicated from previous doc 522c97851b4cd6ee",,
 64d0519cabe81f27,full,fix,B3,<issue_start> + <issue_comment>,,template  inside code fence
 1e5157fe88d31567,full,fix,A2;B3,U+000D x37 at offset 349 | <issue_start> + <issue_comment>,349 U+000D CARRIAGE RETURN (37x),
-6144a55740e4a12e,full,fix,A2;B3;C4;H2,"U+000Dx17 at offset 2369 | <issue_start> + <issue_comment> | line ""username_1: try this "" at offset 1959 is duplicated from previous doc 1e5157fe88d31567",2369 U+000D CARRIAGE RETURN (17x),
+6144a55740e4a12e,full,fix,A2;B3;B4;C4;H2,"U+000Dx17 at offset 2369 | <issue_start> + <issue_comment> | line ""username_1: try this "" at offset 1959 is duplicated from previous doc 1e5157fe88d31567 | <EMAIL> at offset 1215",2369 U+000D CARRIAGE RETURN (17x),
 5dca1a60f6235938,full,fix,B3,<issue_start> + <issue_comment>,,
-aa54920465063976,full,fix,A2;B3,U+000D x50 at offset 1502 | <issue_start> + <issue_comment>,1502 U+000D CARRIAGE RETURN (50x),
+aa54920465063976,full,fix,A2;B3;B4,"U+000D x50 at offset 1502 | <issue_start> + <issue_comment> | <EMAIL> ×10 at 1506, 1542, 1612, 1899, 1917, 2014, 5407, 5441, 5507, 5515",1502 U+000D CARRIAGE RETURN (50x),
 57c68ede326dc873,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | <EMAIL> x3 at offset 2937 | line ""username_1: I don't know the sabre api, but it Looks like yo"" at offset 406 is duplicated from previous doc aa54920465063976",,<EMAIL> inside code fence
 fe6a7ab1cbbf7e2b,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | <EMAIL> x3 at offset 2919 | line ""username_1: I don't know the sabre api, but it Looks like yo"" at offset 388 is duplicated from previous doc 57c68ede326dc873",,
 972def12422daf14,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | <EMAIL> x4 at offset 6040 | line ""username_1: I don't know the sabre api, but it Looks like yo"" at offset 3509 is duplicated from previous doc fe6a7ab1cbbf7e2b",,<EMAIL>
@@ -453,7 +453,7 @@ ded67c167aa58966,full,fix,B3,<issue_start> + <issue_comment>,,
 8e93d112cfabe972,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line "".<issue_comment>username_1: **Retrofit 1:**"" at offset 1596 is duplicated from previous doc ded67c167aa58966",,
 cb403fc068986f86,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> x2 at offset 361,,<PASSWORD> in code
 a977ecc31c8177b1,full,fix,B3,<issue_start> + <issue_comment>,,
-b2355e5093944cf5,full,fix,A2;B3,U+000D x8 at offset 1017 | <issue_start> + <issue_comment>,1017 U+000D CARRIAGE RETURN (8x),
+b2355e5093944cf5,full,fix,A2;B3;B4,U+000D x8 at offset 1017 | <issue_start> + <issue_comment> | <EMAIL> at offset 1386,1017 U+000D CARRIAGE RETURN (8x),
 c78885c862cdda6c,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 128,,<NAME> inside code fence
 2688e97d7afc60a5,full,fix,B3,<issue_start> + <issue_comment>,,
 33f21eefd69e2944,full,fix,B3,<issue_start> + <issue_comment>,,
