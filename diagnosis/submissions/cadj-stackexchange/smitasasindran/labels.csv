@@ -1,7 +1,7 @@
 doc_id,read,verdict,diseases,evidence,hex,note
 87116d4f6facd13b,full,fix,B3,<issue_start> + <issue_comment>,,Is [selected_answer] a ghost token? Probably not..
-c9e11c8baa07c6e0,full,fix,B3;C2,<issue_start> + <issue_comment> | ---------,,horizontal line markers | urls
-d78b5eeab23e7a55,full,fix,B3,<issue_start> + <issue_comment>,,html inside code. Not B2
+c9e11c8baa07c6e0,full,fix,B3;C2,<issue_start> + <issue_comment>,,horizontal line markers are needed for table | urls
+d78b5eeab23e7a55,full,fix,B3;B5,"<issue_start> + <issue_comment> | ""?>"" at offset 1101",,<select..> html inside code - Not B2. Disconnected '?>' inside php code fence
 1700b09990f0ec0f,full,fix,B3,<issue_start> + <issue_comment>,,"⟦U+FFFD⟧ referenced inside code and as text, like 'resultString = ""string with encoding problem: ⟦U+FFFD⟧""'  , Not A1. urls, url within <>"
 71acfee0eb411a72,full,fix,B3,<issue_start> + <issue_comment>,,repeating code snippets – not a problem
 578eb1503702a79d,full,fix,B3,<issue_start> + <issue_comment>,,
@@ -41,17 +41,19 @@ a8e18cb284cc75f6,full,fix,B3,<issue_start> + <issue_comment>,,
 2e6565188263f052,full,fix,B3,<issue_start> + <issue_comment>,,valid urls
 5e3bc3089dda6fdf,full,fix,B3,<issue_start> + <issue_comment>,,url inside <>. Other valid urls
 9fb87c85679f717b,full,fix,B3,<issue_start> + <issue_comment>,,valid urls
-305393ad2072fc97,full,fix,B3;B4,"<issue_start> + <issue_comment> | line ""<NAME> in chapter 3"" at offset 1159",,PII placeholder. <NAME> is in text
-21aa9baac5b870a9,full,fix,B3;B4,"<issue_start> + <issue_comment> | line ""<NAME> in chapter 3"" at offset 1180",,PII placeholder. <NAME> is in
+305393ad2072fc97,full,fix,B3;B4,"<issue_start> + <issue_comment> | line ""<NAME>"" at 
+1159",,PII placeholder. <NAME> is in text
+21aa9baac5b870a9,full,fix,B3;B4,"<issue_start> + <issue_comment> | line ""<NAME>"" at 
+1180",,PII placeholder. <NAME> is in
 89075b3784784e81,full,fix,B3,<issue_start> + <issue_comment>,,
 9dc7c40dedf0381a,full,fix,B3,<issue_start> + <issue_comment>,,
-58529fc2c29c890f,full,fix,B3;B4,"<issue_start> + <issue_comment> | <EMAIL> at offset 309, 623, 648, 673, 698, 1991, 2443",,PII placeholder. <EMAIL> some inside code
-fd7ca38dd23da802,full,fix,B3;B4,<issue_start> + <issue_comment> | <EMAIL> at offset 1980,,PII placeholder. <EMAIL> is inside code
+58529fc2c29c890f,full,fix,B3;B4,"<issue_start> + <issue_comment> | line ""<EMAIL>"" x7 at 309",,PII placeholder. <EMAIL> some inside code
+fd7ca38dd23da802,full,fix,B3;B4,"<issue_start> + <issue_comment> | line ""<EMAIL>"" x2 at 1980",,PII placeholder. <EMAIL> is inside code
 5dc4841cc2434f59,full,fix,B3,<issue_start> + <issue_comment>,,
 3272103639b2d1b3,full,fix,B3,<issue_start> + <issue_comment>,,url
 03fb4983971b0372,full,fix,B3,<issue_start> + <issue_comment>,,"valid urls, one inside <> | <https://github.com/gruntjs/grunt-contrib-connect#livereload>"
 123bb53ea41cdf82,full,fix,B3,<issue_start> + <issue_comment>,,urls
-5d6538f4a5c3009e,full,fix,B3;B4,"<issue_start> + <issue_comment> | line 'char \*word = ""<PASSWORD>"";' at 1242 and 2 more ",,PII placeholder. <PASSWORD> is inside code
+5d6538f4a5c3009e,full,fix,B3;B4,"<issue_start> + <issue_comment> | line ""<PASSWORD>"" ×3 at 1242",,PII placeholder. <PASSWORD> is inside code
 5a9016952491a520,full,fix,B3,<issue_start> + <issue_comment>,,PII placeholder. <PASSWORD> is inside code. Not marking as B2
 18ba740b67dcb026,full,fix,B3,<issue_start> + <issue_comment>,,"PII placeholder. <PASSWORD> is inside code. Not marking as B2. One entry looks wrong: password = <PASSWORD>(word,salt);"
 583cfb8f3af34273,full,fix,B3,<issue_start> + <issue_comment>,,PII placeholder. <PASSWORD> is inside code
@@ -103,7 +105,7 @@ f9134742398e0f55,full,fix,B3,<issue_start> + <issue_comment>,,
 c67f9f1a8994fbbc,full,fix,B3,<issue_start> + <issue_comment>,,
 1ee11cceece270b9,full,fix,B3,<issue_start> + <issue_comment>,,
 1ea4535b6a2e5a35,full,fix,B3;B4,"<issue_start> + <issue_comment> | line “intent.putExtra(Intent.EXTRA_EMAIL, ""<EMAIL>"");” x2 at 178",,PII placeholder. <EMAIL> is inside code
-c3c21126741ed209,full,fix,B3;B4,<issue_start> + <issue_comment> | line “@<NAME> has shared a nice trick”  at 2817,,Templates are inside code snippets | has a long sql stacktrace in one line. E1?
+c3c21126741ed209,full,fix,B3;B4;B5,"<issue_start> + <issue_comment> | line “<NAME>"" x1 at 2817 | line ""</code"" x1 at 14742",,"PII placeholder. Templates are inside code snippets, not B4 | has a long sql stacktrace in one line. E1?"
 daaef3d9f8db5299,full,fix,B3;B4,<issue_start> + <issue_comment> | line “<NAME>” at 3225,,PII placeholder. 
 6449d820bcee90d0,full,fix,B3,<issue_start> + <issue_comment>,,url
 0ed98310462c6991,full,fix,B3,<issue_start> + <issue_comment>,,url
@@ -148,10 +150,354 @@ b253be7e6370aa58,full,fix,B3,<issue_start> + <issue_comment>,,
 5ff91eb8f65e9eff,full,fix,B3;B4,"<issue_start> + <issue_comment> |  line ""Email : <EMAIL>')"" at offset 264",,PII placeholder. <EMAIL> is inside code
 08f8e719ac33bb77,full,fix,B3,<issue_start> + <issue_comment>,,
 a7001795247c1a8c,full,fix,B3,<issue_start> + <issue_comment>,,
-c84b6da3144fd746,full,fix,A1;B3,<issue_start> + <issue_comment> | NBSP ×4  at 13086,,urls
-ca6dd037ea389cee,full,fix,A1;B3,<issue_start> + <issue_comment> | NBSP ×4 at 12678,,urls
+c84b6da3144fd746,full,fix,A1;B3,NBSP ×4  at offset 13086 | <issue_start> + <issue_comment>,,
+ca6dd037ea389cee,full,fix,A1;B3,NBSP ×4 at offset 12678 | <issue_start> + <issue_comment>,,
 7294c965a5e389a9,full,fix,B3,<issue_start> + <issue_comment>,,
 e58e59a428e066d0,full,fix,B3,<issue_start> + <issue_comment>,,
-f97ffb9c23169b6f,full,fix,B3,<issue_start> + <issue_comment>,,"Dummy email, not F1"
+f97ffb9c23169b6f,full,fix,B3,<issue_start> + <issue_comment>,,"Dummy email id, not F1"
 95340769b1667d16,full,fix,B3,<issue_start> + <issue_comment>,,
 fe354c91a2677863,full,fix,B3,<issue_start> + <issue_comment>,,
+7cbef0e1d9982ed4,full,fix,B3,<issue_start> + <issue_comment>,,
+d8109e6632b3496e,full,fix,B3,<issue_start> + <issue_comment>,,Dummy names in code
+64b04097c7badaeb,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: You can use a [Tooltip]"" at offset 16897 is duplicated from previous document d8109e6632b3496e",,Duplicate section from previous document is unrelated to current document
+81ba62500558df90,full,fix,B3,<issue_start> + <issue_comment>,,
+2e33a1392c7e474a,full,fix,B3,<issue_start> + <issue_comment>,,"{{petName}} template inside code fence, not B4"
+405d74af43d5c2d0,full,fix,B3,<issue_start> + <issue_comment>,,
+b2cd4b5a1c855b1d,full,fix,B3,<issue_start> + <issue_comment>,,
+52064b62238a6472,full,fix,B3;C4;H2,"<issue_start> + <issue_comment>  | line ""username_1: This works (you need to save TaskRelated entities)""  at offset 382 is duplicated from previous doc b2cd4b5a1c855b1d",,Duplicate section from previous document b2cd4b5a1c855b1d is unrelated to current doc
+289bd7bc5c2a0eb2,full,fix,B3,<issue_start> + <issue_comment>,,
+835fdcf34b07cdc5,full,fix,B3,<issue_start> + <issue_comment>,,
+1df0b29bb113dbe6,full,fix,B3,<issue_start> + <issue_comment>,,
+b5d781924af27b59,full,fix,B3,<issue_start> + <issue_comment>,,
+a9708f7ea5e28ddc,full,fix,B3,<issue_start> + <issue_comment>,,
+256e919621778b6c,full,drop,B2;B3;B4,<NAME> at offset 5386 | <issue_start> + <issue_comment> | template/code junk in prose at offset 4612,,"junk is more than actual content, better to drop"
+08f08556cb09aa47,full,fix,B3,<issue_start> + <issue_comment>,,
+e03693906cda5d79,full,fix,B3,<issue_start> + <issue_comment>,,
+65eeefb09d797076,full,fix,B3,<issue_start> + <issue_comment>,,
+eac3888515d9f44c,full,fix,B3,<issue_start> + <issue_comment>,,
+89cbb4a40b49a0fa,full,fix,B3,<issue_start> + <issue_comment>,,
+c553a17df597cd4f,full,fix,B3,<issue_start> + <issue_comment>,,
+18ccebc82aac0de6,full,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | line "" });"" at offset 1266 | line ""username_1: By process (in the JSF specification""  at offset 1685 is duplicated from previous document c553a17df597cd4f",,"""});"" is outside the code fence. Duplicate section from previous document is unrelated to current document"
+f8c2cba47b3d03f1,full,fix,B2;B3,<issue_start> + <issue_comment> | <PASSWORD> ×1 at offset 4113 + <NAME> ×2 at offset 4711,,<PASSWORD> is inside code. <NAME> is in text.
+362f0f37f4ea8e9d,full,fix,B3,<issue_start> + <issue_comment>,,
+6276e9a06f67145a,full,fix,B3,<issue_start> + <issue_comment>,,
+1aa8f21312ae7d00,full,fix,B3,<issue_start> + <issue_comment>,,
+5d855d382e5aa64b,full,fix,B3,<issue_start> + <issue_comment>,,long link at offset 1527
+3971996b6809ada2,full,fix,B3,<issue_start> + <issue_comment>,,
+a8cb5c447570748d,full,fix,B3,<issue_start> + <issue_comment>,,
+8016caa2c1c73e35,full,fix,B3,<issue_start> + <issue_comment>,,
+ea371a2bd8c0022e,full,fix,B3,<issue_start> + <issue_comment>,,long urls
+956f0352df384ac3,full,fix,B3,<issue_start> + <issue_comment>,,
+b2731b873277334b,full,fix,B3,<issue_start> + <issue_comment>,,
+751cda74eb0ca3e8,full,fix,B3,<issue_start> + <issue_comment>,,
+c3e9f65c003c6060,full,fix,B3,<issue_start> + <issue_comment>,,
+b1d18f2b4e13cafd,full,fix,B3,<issue_start> + <issue_comment>,,
+9ce5ad637ad875de,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: Have a look under"" at offset 417 is duplicated from previous doc b1d18f2b4e13cafd",,Duplicate section from previous document is unrelated to current document
+3900ee4e4b861aff,full,drop,B3;C4;H2,"<issue_start> + <issue_comment>  | line ""username_1: Have a look under the section **broker status** "" at offset 547 is duplicated from the previous document 9ce5ad637ad875de and b1d18f2b4e13cafd",,Duplicate section from previous document is unrelated to current document
+a712dd07ac1627af,full,fix,B3,<issue_start> + <issue_comment>,,
+38318eaf0d137930,full,fix,B3,<issue_start> + <issue_comment>,,
+a9365535726ef265,full,fix,B3,<issue_start> + <issue_comment>,,
+b263fa345a1ca6ce,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> x3 at offset 58,,"<NAME> inside code, not PII placeholder"
+872ea781f3503a1e,,fix,B3;B4;C4;H2,"<issue_start> + <issue_comment> | <NAME>x1 at offset 1218 | line ""username_1: This regex will do for each line"" at offset 556 is duplicated from previous doc b263fa345a1ca6ce",,<NAME> is inside code. Duplicate section from previous document is unrelated to current document
+cdb80e5aa13a100b,full,fix,B3,<issue_start> + <issue_comment>,,
+4200a562fdea0dd7,full,fix,B3,<issue_start> + <issue_comment>,,
+8adb7ee924d9c299,full,fix,B3,<issue_start> + <issue_comment>,,
+92172ee7c68d51f9,,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: `movementDistance` is an `Int`"" at offset 543 is duplicated from previous doc 8adb7ee924d9c299",,Duplicate section from previous document is unrelated to current document
+a2e83ef3c79ca9f3,full,fix,B3,<issue_start> + <issue_comment>,,
+1c7655b21b448d10,full,fix,B3,<issue_start> + <issue_comment>,,
+ca35043b4da37535,full,fix,B3,<issue_start> + <issue_comment>,,
+8514c04e042e865d,full,fix,B3,<issue_start> + <issue_comment>,,
+8ba366ad7d0fe5fb,full,fix,B3,<issue_start> + <issue_comment>,,
+dd38051e267b7d65,full,fix,B3,<issue_start> + <issue_comment>,,
+69d0478dd43e7a07,full,fix,B3;C4;H2,"<issue_start> + <issue_comment> | line ""username_1: I think you have two options here"" at offset 721 is duplicated from previous doc dd38051e267b7d65",,Duplicate section from offset 721 is unrelated to current document
+3f4b55008e8492e2,full,fix,B3,<issue_start> + <issue_comment>,,
+ac99e62fadfa2546,full,fix,B3,<issue_start> + <issue_comment>,,
+18c2824e19e9e865,partial,fix,B3,<issue_start> + <issue_comment>,,
+82c781fc6c4a09a3,full,fix,B3,<issue_start> + <issue_comment>,,
+6e93c2786c2a9e32,full,fix,B3,<issue_start> + <issue_comment>,,
+922a98a34781e397,,fix,B3,<issue_start> + <issue_comment>,,Templated code is inside code fence
+428f5d0916b97b2d,full,fix,B3,<issue_start> + <issue_comment>,,
+84e57e20c5440ca6,full,fix,B3,<issue_start> + <issue_comment>,,NaN is in text for explanation
+557b9d4213852a24,full,fix,B3,<issue_start> + <issue_comment>,,
+b0d79a706080e22f,full,fix,B3,<issue_start> + <issue_comment>,,
+4ab5c9301fe9340b,full,fix,B3,<issue_start> + <issue_comment>,,
+47e2e37894735e0b,full,fix,B3,<issue_start> + <issue_comment>,,
+092d023e1b6ae2e2,full,fix,B3,<issue_start> + <issue_comment>,,
+8cd26afb11587313,full,fix,B3,<issue_start> + <issue_comment>,,
+b1ef0ef2ac6271e3,full,fix,B3,<issue_start> + <issue_comment>,,
+687b1f60492cae5c,full,fix,B3,<issue_start> + <issue_comment>,,
+61ce5b66529f5222,full,fix,B3,<issue_start> + <issue_comment>,,
+0a28a946b86ef9c0,full,fix,B3,<issue_start> + <issue_comment>,,
+5ee65c2e505f8267,full,fix,B3,<issue_start> + <issue_comment>,,
+128925312e14bd13,full,fix,B3,<issue_start> + <issue_comment>,,
+afbaa1d2ff322519,full,fix,B3,<issue_start> + <issue_comment>,,'undefined' is inside code fence
+98b93bc5b083690e,full,fix,B3,<issue_start> + <issue_comment>,,
+7f3a4283f624d053,full,fix,B3,<issue_start> + <issue_comment>,,
+c7c4f155d72137fa,full,fix,B3;C2,"<issue_start> + <issue_comment> | line ""Lorem ipsum dolor""  at offset 7254 has repeating section",,
+d2b6d9857a226f57,full,fix,B3;H2,<issue_start> + <issue_comment>,,Previous doc repeats
+4e2354387bea8413,full,fix,B3,<issue_start> + <issue_comment>,,
+79535249763f7f41,full,fix,B3,<issue_start> + <issue_comment>,,
+1660dde8a67d2279,full,fix,B3,<issue_start> + <issue_comment>,,
+d14f537ad89c956a,full,fix,B3,<issue_start> + <issue_comment>,,
+3b04444494acfbb2,full,fix,B3,<issue_start> + <issue_comment>,,
+fab94f60cbc8e4ab,full,fix,B3,<issue_start> + <issue_comment>,,
+497228e10e525ecd,full,fix,B3,<issue_start> + <issue_comment>,,
+259a1f964b5b0435,full,fix,B3,<issue_start> + <issue_comment>,,
+ac07d957a1f9ad60,full,fix,B3,<issue_start> + <issue_comment>,,
+66837631f182b873,full,fix,B3;H2,<issue_start> + <issue_comment>,,
+2adbc93545d8af0c,full,fix,B3;H2,<issue_start> + <issue_comment>,,
+a2e0f3f9dc16aca2,full,fix,B3;H2,<issue_start> + <issue_comment>,,
+6e45d96bbf7398cc,full,fix,B3,<issue_start> + <issue_comment>,,
+6334c16608199b3b,,fix,B3,<issue_start> + <issue_comment>,,Template inside code fence
+27cf85c798df0a09,full,fix,B3;H2,<issue_start> + <issue_comment>,,
+da57a05ac8ff84b2,full,fix,B3;H2,<issue_start> + <issue_comment>,,
+597f5db65e5a90f1,full,fix,B3,<issue_start> + <issue_comment>,,
+8757fca4a5a01f5d,full,fix,B3,<issue_start> + <issue_comment>,,
+980d01ae250bdea8,full,fix,B3,<issue_start> + <issue_comment>,,
+9a0e1a5f7d25abcf,full,fix,B3,<issue_start> + <issue_comment>,,
+4b50bab803ae8cfc,full,fix,B3,<issue_start> + <issue_comment>,,
+e3a04aa47f713b4c,full,fix,B3,<issue_start> + <issue_comment>,,
+44b81cd6b7b72695,full,fix,B3,<issue_start> + <issue_comment>,,
+82035ad73e6cb102,full,fix,B3;H2,<issue_start> + <issue_comment>,,
+91290df0233a31bf,full,fix,B3,<issue_start> + <issue_comment>,,
+f5f801e01df30649,full,fix,B3,<issue_start> + <issue_comment>,,
+0a5f250c9dbf1d80,full,fix,B3,<issue_start> + <issue_comment>,,
+0cd8eefde1f0f85e,full,fix,B3,<issue_start> + <issue_comment>,,
+f0b9d1f87f25491b,full,fix,B3,<issue_start> + <issue_comment>,,
+c176a2ae96a8c51c,partial,fix,B3,<issue_start> + <issue_comment>,,
+6ba08c31897ef5f5,full,fix,B3,<issue_start> + <issue_comment>,,
+59e63089a007939d,full,fix,B3,<issue_start> + <issue_comment>,,
+6c167e68c0e62b33,full,fix,B3,<issue_start> + <issue_comment>,,
+8629149c6e331a98,full,fix,B3,<issue_start> + <issue_comment>,,
+43e5d1c0578f8390,full,fix,B3,<issue_start> + <issue_comment>,,
+71d3e7cd42bdf733,full,fix,B3,<issue_start> + <issue_comment>,,
+a7cddb77d4edc304,full,fix,B3,<issue_start> + <issue_comment>,,
+4d7ac01edd839b87,full,fix,B3,<issue_start> + <issue_comment>,,
+5f46e5cb0f2a603b,full,fix,B3,<issue_start> + <issue_comment>,,
+068ca3a421d10e77,full,fix,B3,<issue_start> + <issue_comment>,,
+c511866441b72317,full,fix,B3,<issue_start> + <issue_comment>,,
+653758f77ab8a0d7,full,fix,B3,<issue_start> + <issue_comment>,,
+5b4e028de3b881e8,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 26155,,<NAME> in text
+a3947a60677c6e22,full,fix,B3,<issue_start> + <issue_comment>,,
+3ff921cd9bf3bdaf,full,fix,B3,<issue_start> + <issue_comment>,,
+c690c0c539e5374d,full,fix,A2;B3,U+000D x69 at offset 573 | <issue_start> + <issue_comment>,573 U+000D CARRIAGE RETURN (69x),
+0a792d910e5370e7,full,fix,B3,<issue_start> + <issue_comment>,,
+d5f202d22c6432f9,full,fix,B3,<issue_start> + <issue_comment>,,
+a881f37e43cf6ecc,full,fix,B3,<issue_start> + <issue_comment>,,
+b9203642a7704098,full,fix,A2;B3,U+000D x28 at offset 527 | <issue_start> + <issue_comment>,,undefined inside code fence
+b713e3bc410013b0,full,fix,B3,<issue_start> + <issue_comment>,,
+b7bf70814c577c5b,full,fix,B3,<issue_start> + <issue_comment>,,
+7fb08b0d1823cbf5,full,fix,B3,<issue_start> + <issue_comment>,,
+b4862552a9ba0a71,full,fix,B3,<issue_start> + <issue_comment>,,
+cd4dac47c72c0da0,full,fix,B3,<issue_start> + <issue_comment>,,
+ba2983860106027a,full,fix,B3,<issue_start> + <issue_comment>,,
+906b330a6bde1f0b,full,fix,B3,<issue_start> + <issue_comment>,,
+574ec575a861e563,full,fix,B3,<issue_start> + <issue_comment>,,
+6cb6d4269338ed14,full,fix,B3,<issue_start> + <issue_comment>,,
+8aca76ed2c6ae5fb,full,fix,A1;B3,NBSP x1 at offset 3051 | <issue_start> + <issue_comment>,3051 U+00A0 NO-BREAK SPACE,
+2bffb792c193853a,full,fix,B3,<issue_start> + <issue_comment>,,
+b357c93f7984d21a,full,fix,B3,<issue_start> + <issue_comment>,,
+7033eb96868f805c,full,fix,B3,<issue_start> + <issue_comment>,,
+ab667557991d5fe9,full,fix,B3,<issue_start> + <issue_comment>,,
+7b6e0a2c23d68731,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME x3 at offset 576,,<NAME> inside code
+caab0dbaa0d7211e,,fix,A2;B3,U+000D x126 at offset 590 | <issue_start> + <issue_comment>,590 U+000D CARRIAGE RETURN (126x),
+5547c0d869baeb79,full,fix,B3,<issue_start> + <issue_comment>,,
+b0e8032bfdbd0488,full,fix,B3,<issue_start> + <issue_comment>,,
+d863f5e408e8921f,full,fix,B3,<issue_start> + <issue_comment>,,
+744ade51d6f211c2,full,fix,A2;B3,U+000D x8 at offset 1013 | <issue_start> + <issue_comment>,1013 U+000D CARRIAGE RETURN (8x),
+37ff77e98bf2664e,full,fix,B3,<issue_start> + <issue_comment>,,
+061bc024ab884691,full,fix,B3,<issue_start> + <issue_comment>,,
+252aa1d4ceb483e2,full,fix,B3,<issue_start> + <issue_comment>,,
+27c67715b13e102e,full,fix,B3,<issue_start> + <issue_comment>,,
+e92ebe348f700947,full,fix,B3,<issue_start> + <issue_comment>,,
+bf58b87db1a4f7d8,full,fix,B3,<issue_start> + <issue_comment>,,
+2905f80c403c4ac6,full,fix,B3,<issue_start> + <issue_comment>,,
+ac7868d17d212622,full,fix,B3,<issue_start> + <issue_comment>,,
+1882d04bec9cd163,full,fix,B3,<issue_start> + <issue_comment>,,
+6c24860fe26e2832,full,fix,B3,<issue_start> + <issue_comment>,,
+14d0cd33e7b6f816,full,fix,B3,<issue_start> + <issue_comment>,,
+bcb23ec5d04976d3,full,fix,B3,<issue_start> + <issue_comment>,,
+b5ae3957547d5625,full,fix,B3,<issue_start> + <issue_comment>,,
+ba40663795cd9098,full,fix,A2;B3;B4,U+000D x8 at offset 429 | <issue_start> + <issue_comment> | <NAME> x56 at offset 1733,429 U+000D CARRIAGE RETURN (8x),<NAME> inside code
+7a726415579066fc,full,fix,B3,<issue_start> + <issue_comment>,,
+78d9ca2fea61bc6a,full,fix,B3,<issue_start> + <issue_comment>,,
+9c259e1d1d85a0a9,full,fix,B3,<issue_start> + <issue_comment>,,
+31bef893714d3555,full,fix,B3,<issue_start> + <issue_comment>,,
+e805504d95d614a1,full,fix,B3,<issue_start> + <issue_comment>,,
+f45a6e7801e8b900,full,fix,B3,<issue_start> + <issue_comment>,,
+8e58c169bbd9bc20,full,fix,B3,<issue_start> + <issue_comment>,,
+934b943878b5fee2,full,fix,B3,<issue_start> + <issue_comment>,,
+0b1328449048c3bd,full,fix,B3,<issue_start> + <issue_comment>,,
+329a4109834fab25,full,fix,B3,<issue_start> + <issue_comment>,,
+9b8e44d739047bd6,full,fix,A2;B3,U+000D x7 at offset 1448 | <issue_start> + <issue_comment>,1448 U+000D CARRIAGE RETURN (7x),
+04720575a7202be1,full,fix,B3,<issue_start> + <issue_comment>,,
+4e0f04d31ba64e48,full,fix,B3,<issue_start> + <issue_comment>,,
+8d40a21266f2ba87,full,fix,A2;B3,U+000D x11 at offset 522 | <issue_start> + <issue_comment>,522 U+000D CARRIAGE RETURN (11x),
+7af30bb6b1953892,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> x2 at offset 3539,,<PASSWORD> inside code
+cbd87768479dc701,full,fix,A2;B3,U+000D x8 at offset 1567 | <issue_start> + <issue_comment>,1567 U+000D CARRIAGE RETURN (8x),
+d521c098fcdf4fe6,full,fix,A2;B3,U+000D x6 at offset 2893 | <issue_start> + <issue_comment>,2893 U+000D CARRIAGE RETURN (6x),
+576ac0563b3a3f5c,,fix,A2;B3;H2,U+000D x6 at offset 3594 | <issue_start> + <issue_comment>,3594 U+000D CARRIAGE RETURN (6x),
+56242bd9c9069329,full,fix,B3,<issue_start> + <issue_comment>,,
+3c3fb24d42cd0c58,full,fix,B3,<issue_start> + <issue_comment>,,
+d8c68901f78d357f,full,fix,B3,<issue_start> + <issue_comment>,,
+724e7dd09b7b0e11,full,fix,B3,<issue_start> + <issue_comment>,,
+920f41281309d4da,full,fix,A2;B3,U+000D x77 at offset 514 | <issue_start> + <issue_comment>,514 U+000D CARRIAGE RETURN (77x),
+d19e7aa719ee38eb,full,fix,B3,<issue_start> + <issue_comment>,,
+04c2749b32e8ca12,full,fix,B3,<issue_start> + <issue_comment>,,
+00c7482543a71df1,full,fix,B3,<issue_start> + <issue_comment>,,
+9e02aca11343f49f,full,fix,B3,<issue_start> + <issue_comment>,,
+0c2404a6f25de8e5,full,fix,B3,<issue_start> + <issue_comment>,,
+d8bf3cdfb381a776,full,fix,B3,<issue_start> + <issue_comment>,,
+91db90bc7e477f49,full,fix,B3,<issue_start> + <issue_comment>,,
+c634f36072603c63,full,fix,B3,<issue_start> + <issue_comment>,,
+102c049206026019,full,fix,B3,<issue_start> + <issue_comment>,,
+04ae6a66092b8bb6,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 1755,,<NAME> in text
+169c69bbc88ab7d2,full,fix,B3,<issue_start> + <issue_comment>,,stacktrace
+26890486f20cfbb5,full,fix,B3,<issue_start> + <issue_comment>,,
+e5b187cb5ae1a750,full,fix,B3,<issue_start> + <issue_comment>,,
+548bc9213b19ad24,full,fix,A2;B3,U+000D x15 at offset 1212 | <issue_start> + <issue_comment>,1212 U+000D CARRIAGE RETURN (15x),
+75df43ad79fc1671,full,fix,A2;B3,U+000D x15 at offset 750 | <issue_start> + <issue_comment>,750 U+000D CARRIAGE RETURN (15x),
+87a224bf3931c9fe,full,fix,A2;B3,U+000D x15 at offset 1096 | <issue_start> + <issue_comment>,1096 U+000D CARRIAGE RETURN (15x),
+430dd4f2e84be5cf,full,fix,B3,<issue_start> + <issue_comment>,,
+f1afaf18445f476d,full,fix,B3,<issue_start> + <issue_comment>,,
+a11ee394f874113a,full,fix,B3,<issue_start> + <issue_comment>,,
+07ded035265c5caa,full,fix,B3,<issue_start> + <issue_comment>,,
+d097fd227e578ddc,full,fix,B3,<issue_start> + <issue_comment>,,
+efc7e571a2b2304f,full,fix,B3,<issue_start> + <issue_comment>,,
+16268e25cff8a8d2,full,fix,B3,<issue_start> + <issue_comment>,,
+7ed58af4e3a1a10d,full,fix,B3,<issue_start> + <issue_comment>,,
+80b5a0faa4c56be9,full,fix,B3,<issue_start> + <issue_comment>,,
+b208614321a5cada,full,fix,B3,<issue_start> + <issue_comment>,,
+329230697872e1ba,full,fix,B3,<issue_start> + <issue_comment>,,
+85dfe8a5210c9450,full,fix,B3,<issue_start> + <issue_comment>,,
+53f857054adc349a,full,fix,B3,<issue_start> + <issue_comment>,,
+48c2d7e2034553a4,full,fix,B3,<issue_start> + <issue_comment>,,
+0fd6b52f477dd9d7,full,fix,B3,<issue_start> + <issue_comment>,,
+b03a18840fe3d497,full,fix,B3,<issue_start> + <issue_comment>,,
+d2ccb4f1833eae34,full,fix,B3,<issue_start> + <issue_comment>,,
+aae6d246d47c442b,full,fix,B3,<issue_start> + <issue_comment>,,
+d602399260839945,full,fix,B3,<issue_start> + <issue_comment>,,
+a77fedd1b88cd964,full,fix,B3,<issue_start> + <issue_comment>,,
+8444b4c4d32359e7,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> at offset 554,,<PASSWORD> in code
+0426cfef686de484,full,fix,B3,<issue_start> + <issue_comment>,,
+168db440ed36cd1f,full,fix,B3,<issue_start> + <issue_comment>,,
+49c292cfd9167a42,full,fix,B3,<issue_start> + <issue_comment>,,
+5152ffb2da4fafac,full,fix,B3,<issue_start> + <issue_comment>,,
+28cc4498b1281713,full,fix,B3,<issue_start> + <issue_comment>,,
+968c4dd4078ebe46,full,fix,B3,<issue_start> + <issue_comment>,,
+cdd16901e095cd66,full,fix,B3,<issue_start> + <issue_comment>,,
+7c6dc3b33bf4fefd,full,fix,B3,<issue_start> + <issue_comment>,,
+9527940d27956ef0,full,fix,B3,<issue_start> + <issue_comment>,,
+97b67f5188cf9f1f,full,fix,B3,<issue_start> + <issue_comment>,,
+9fce1f531b4c3ddb,full,fix,B3,<issue_start> + <issue_comment>,,
+5f6f678e9228ee5c,full,fix,B3,<issue_start> + <issue_comment>,,
+b5c5af5c137c3aae,full,fix,B3,<issue_start> + <issue_comment>,,
+9e01b92662734af8,full,fix,B3;B4,<issue_start> + <issue_comment> | <EMAIL> x2 at offset 506,,<EMAIL> inside code
+c1b639634a503f38,full,fix,B3,<issue_start> + <issue_comment>,,
+6f957d73f0820879,full,fix,B3,<issue_start> + <issue_comment>,,
+941045ddcabbaa8a,full,fix,B3,<issue_start> + <issue_comment>,,
+2ee2ed6fcf486383,full,fix,B3,<issue_start> + <issue_comment>,,
+116fae6f6841e536,full,fix,B3,<issue_start> + <issue_comment>,,
+f76083bc42994160,full,fix,A2;B3,U+000D x24 at offset 595 | <issue_start> + <issue_comment>,595 U+000D CARRIAGE RETURN (24x),
+48e4eeb14ed5e495,full,fix,B3,<issue_start> + <issue_comment>,,
+113d41ee30bf97b6,full,fix,B3,<issue_start> + <issue_comment>,,
+28ed1f8ee8eb17eb,full,fix,B3,<issue_start> + <issue_comment>,,
+f7a9df587704dda5,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> x3 at offset 1079 +  | <EMAIL> x2 at offset 1123,,<PASSWORD> and <EMAIL> inside code block
+9ac9e478b99801fc,full,fix,B3,<issue_start> + <issue_comment>,,
+2199bfe395b3944a,full,fix,B3,<issue_start> + <issue_comment>,,
+554795429f374d18,full,fix,B3,<issue_start> + <issue_comment>,,
+bcb99e54161e9831,full,fix,B3,<issue_start> + <issue_comment>,,
+0c28b8f7f020ab07,full,fix,B3,<issue_start> + <issue_comment>,,
+023cb5806152b961,full,fix,B3,<issue_start> + <issue_comment>,,
+75581e3df0be051c,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> x2 at offset 887,,<PASSWORD> inside code
+e02c60426c593d78,full,fix,B3,<issue_start> + <issue_comment>,,
+4cc383972b620c1f,full,fix,A2;B3,U+000D x42 at offset 1112 | <issue_start> + <issue_comment>,1112 U+000D CARRIAGE RETURN (42x),
+522c97851b4cd6ee,full,fix,B3,<issue_start> + <issue_comment>,,
+c98131a17713f49c,full,fix,B3,<issue_start> + <issue_comment>,,
+64d0519cabe81f27,full,fix,B3,<issue_start> + <issue_comment>,,template  inside code fence
+1e5157fe88d31567,,fix,A2;B3,U+000D x37 at offset 349 | <issue_start> + <issue_comment>,349 U+000D CARRIAGE RETURN (37x),
+6144a55740e4a12e,,fix,A2;B3,U+000Dx17 at offset 2369 | <issue_start> + <issue_comment>,2369 U+000D CARRIAGE RETURN (17x),
+5dca1a60f6235938,full,fix,B3,<issue_start> + <issue_comment>,,
+aa54920465063976,full,fix,A2;B3,U+000D x50 at offset 1502 | <issue_start> + <issue_comment>,,
+57c68ede326dc873,full,fix,B3;B4,<issue_start> + <issue_comment> | <EMAIL> x3 at offset 2937,,<EMAIL> inside code fence
+fe6a7ab1cbbf7e2b,full,fix,B3;B4,<issue_start> + <issue_comment> | <EMAIL> x3 at offset 2919,,
+972def12422daf14,full,fix,B3;B4;H2,<issue_start> + <issue_comment> | <EMAIL> x4 at offset 6040,,<EMAIL>
+ff570f6a484c8a8d,full,fix,A2;B3,U+000D x53 at offset 2083 | <issue_start> + <issue_comment>,2083 U+000D CARRIAGE RETURN (53x),
+42436160cb70c5c2,full,fix,B3,<issue_start> + <issue_comment>,,
+ba1448546ab48d6c,full,fix,B3,<issue_start> + <issue_comment>,,
+24d0035a05eef60f,full,fix,B3,<issue_start> + <issue_comment>,,
+7622c2898e5a7bad,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 2412,,<NAME> in text
+5cb71e0a90173108,full,fix,A2;B3,U+000D x71 at offset 3660 | <issue_start> + <issue_comment>,3660 U+000D CARRIAGE RETURN (71x),
+16ddf8dca462ca7e,full,fix,B3,<issue_start> + <issue_comment>,,
+06288f8840780e64,full,fix,B3,<issue_start> + <issue_comment>,,
+77a47aeee4d1d587,full,fix,B3,<issue_start> + <issue_comment>,,
+dcc46ca19aeb0756,full,fix,B3,<issue_start> + <issue_comment>,,
+95aa31c2af6c8f98,full,fix,B3,<issue_start> + <issue_comment>,,
+234397184354ca14,full,fix,B3,<issue_start> + <issue_comment>,,
+05a0a1d6fcbb92df,full,fix,B3,<issue_start> + <issue_comment>,,
+0bd5b65872ad81f8,full,fix,B3,<issue_start> + <issue_comment>,,
+8577b46d22babd4e,full,fix,B3,<issue_start> + <issue_comment>,,
+4147c1e1323f78a5,full,fix,B3,<issue_start> + <issue_comment>,,
+63af08218f262463,full,fix,B3,<issue_start> + <issue_comment>,,
+9bb67683e8a75c4c,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 1156,,
+967bdc76ef38365e,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 1225,,
+555f2c77a2605169,full,fix,B3,<issue_start> + <issue_comment>,,
+cd6b57a4befa8da0,full,fix,B3,<issue_start> + <issue_comment>,,
+d298430b2d1d2a56,full,fix,B3,<issue_start> + <issue_comment>,,
+9be6c54cb9976e69,full,fix,B3,<issue_start> + <issue_comment>,,
+c1f14583550e6e7b,full,fix,A2;B3,U+000Dx45 at offset 805 | <issue_start> + <issue_comment>,,
+1eaad4206ac0ed55,full,fix,A2;B3,U+000D x45 at offset 1403 | <issue_start> + <issue_comment>,1403 U+000D CARRIAGE RETURN (45x),
+000da052a88a1b6b,full,fix,A2;B3,U+000D x45 at offset 991 | <issue_start> + <issue_comment>,991 U+000D CARRIAGE RETURN (45x),
+7a6f3161490fc245,full,fix,B3,<issue_start> + <issue_comment>,,
+0cb2ac894923155a,full,fix,B3,<issue_start> + <issue_comment>,,
+ded67c167aa58966,full,fix,B3,<issue_start> + <issue_comment>,,
+8e93d112cfabe972,full,fix,B3,<issue_start> + <issue_comment>,,
+cb403fc068986f86,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> x2 at offset 361,,<PASSWORD> in code
+a977ecc31c8177b1,full,fix,B3,<issue_start> + <issue_comment>,,
+b2355e5093944cf5,full,fix,A2;B3,U+000D x8 at offset 1017 | <issue_start> + <issue_comment>,1017 U+000D CARRIAGE RETURN (8x),
+c78885c862cdda6c,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 128,,<NAME> inside code fence
+2688e97d7afc60a5,full,fix,B3,<issue_start> + <issue_comment>,,
+33f21eefd69e2944,full,fix,B3,<issue_start> + <issue_comment>,,
+88db1faacdad74f6,full,fix,B3,<issue_start> + <issue_comment>,,
+1501374c3eee7fef,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 2217,,
+aa0a9b834dcfe0d2,full,fix,B3;B4;H2,<issue_start> + <issue_comment> | <NAME> at offset 2459,,
+0e744dca322647b4,full,fix,B3,<issue_start> + <issue_comment>,,
+a1f08c6653a4be7e,full,fix,B3,<issue_start> + <issue_comment>,,
+5a11f639ea728229,full,fix,A2;B3,U+000D x83 at offset 178 | <issue_start> + <issue_comment>,178 U+000D CARRIAGE RETURN (83x),
+0d664c08c2f6863c,full,fix,B3,<issue_start> + <issue_comment>,,
+dee5336ef39672eb,full,fix,B3,<issue_start> + <issue_comment>,,
+23c492e383108216,full,fix,B3,<issue_start> + <issue_comment>,,
+00a01b45b3aedfd1,full,fix,B3,<issue_start> + <issue_comment>,,
+02f4fed44c43c027,full,fix,B3,<issue_start> + <issue_comment>,,
+71b83411f8b3844c,full,fix,B3,<issue_start> + <issue_comment>,,
+bb1b5ae5ef6e505d,full,fix,B3,<issue_start> + <issue_comment>,,
+866432ae57420c83,full,fix,B3,<issue_start> + <issue_comment>,,
+86a0f608da2e0805,full,fix,B3,<issue_start> + <issue_comment>,,
+9e2ee527455e3638,full,fix,B3,<issue_start> + <issue_comment>,,
+bd6fd853c1eeeae9,full,fix,B3,<issue_start> + <issue_comment>,,template inside code
+14db8b56d38bfc27,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> at offset 1840,,<PASSWORD> inside code
+da453651ddadbfa0,full,fix,A1;B3;B4,VS16 x1 at offset 19253 | <issue_start> + <issue_comment> | <NAME> x3 at offset 151,19253 U+FE0F VARIATION SELECTOR-16,template  inside code fence
+0d446dabd4979dc9,full,fix,B3;B4,<issue_start> + <issue_comment> | <KEY> at offset 3191,,<KEY> inside code
+0114c483c38ed72d,full,fix,B3,<issue_start> + <issue_comment>,,
+afaacc570f12995a,full,fix,B3,<issue_start> + <issue_comment>,,
+acfe88076a07d946,full,fix,B3,<issue_start> + <issue_comment>,,
+079a1c491ec571c2,full,fix,B3,<issue_start> + <issue_comment>,,<script..> and <p> inside code block
+b1c5c6fc350d4eba,full,fix,B3,<issue_start> + <issue_comment>,,
+032b783440da7ccf,full,fix,B3,<issue_start> + <issue_comment>,,
+8da48a3641fbfc72,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 1526,,<NAME> inside code
+21c5c8e73e238b30,full,fix,A2;B3,U+000D x16 at offset 1791 | <issue_start> + <issue_comment>,1791 U+000D CARRIAGE RETURN (16x),
+84328b4616ce6c25,full,fix,B3,<issue_start> + <issue_comment>,,
+791dee0f1ae3e6f3,full,fix,B3,<issue_start> + <issue_comment>,,
+6b1c9a340b079b4e,full,fix,A2;B3,U+000D x31 at offset 1080 | <issue_start> + <issue_comment>,1080 U+000D CARRIAGE RETURN (31x),
+2dc1d70137272886,full,fix,B3,<issue_start> + <issue_comment>,,
+7e370b484b954750,full,fix,B3,<issue_start> + <issue_comment>,,
+3322a9960a93d294,full,fix,B3,<issue_start> + <issue_comment>,,
+f10eed25078fed92,full,fix,B3,<issue_start> + <issue_comment>,,
+45c3c889c10e7036,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> at offset 2993,,<PASSWORD> inside code
+802e3c764c1b2dbd,full,fix,B3;B4,<issue_start> + <issue_comment> | <NAME> at offset 1440,,
+c40b6351a79ca3ad,full,fix,B3,<issue_start> + <issue_comment>,,
+b4febc233d484105,full,fix,B3,<issue_start> + <issue_comment>,,
+9580202f0a36d423,full,fix,A2;B3,U+000D x75 at offset 2310 | <issue_start> + <issue_comment>,,
+ebe2c45661740707,full,fix,B3;B4,<issue_start> + <issue_comment> | <PASSWORD> at offset 2817,,
+9e9a92ea281fbf91,full,fix,B3;B4;H2,<issue_start> + <issue_comment> | <PASSWORD> at offset 1901,,
+2351b93ec2f03a73,full,fix,B3,<issue_start> + <issue_comment>,,
