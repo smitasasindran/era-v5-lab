@@ -63,14 +63,15 @@ After TSAI stages the pinned offline LaBSE model, use the shard metadata in `app
 provenance) to generate the pinned run config without hand-copying hashes or part counts:
 
 ```bash
-python -I teams/01-data-a/jobs/2026-11-19-first-training/prepare_run.py --bundle out/first-training-inputs --input-root /path/to/raw --tokenizer /path/to/p1536/tokenizer.json --clean-workers 16 --f2-workers 30 --run-id first-training-v1
+python -I teams/01-data-a/jobs/2026-11-19-first-training/prepare_run.py --bundle out/first-training-inputs --input-root /path/to/raw --tokenizer /path/to/p1536/tokenizer.json --clean-workers 16 --f2-workers 30 --shard-workers 8 --run-id first-training-v1
 ```
 
 The generator materializes `out/first-training-inputs/pack_metadata.json` from
 `approved_inputs.json`; there is no second committed table. `--pack-table` can
-optionally select an explicit table, whose licences are checked against the scope. The two worker counts have no
+optionally select an explicit table, whose licences are checked against the scope. The three worker counts have no
 default and must be given; the values above are for the job host (32 vCPU, 64 GiB): `--clean-workers` 16 (parts cleaned at
-once, about 0.5 GB each; `clean.json` says 4) and `--f2-workers` 30 (the fingerprint set is shared). The MinHash workers are not
+once, about 0.5 GB each; `clean.json` says 4) `--f2-workers` 30 (the fingerprint set is shared) and `--shard-workers` 8 (packs written at the same time; each part has a
+process of its own, about 1 to 4 GB on the sample). The MinHash workers are not
 set here: both MinHash settings files say 16, which the sizing gate measures.
 The generator checks the published LaBSE weight/config sizes and SHA256 before
 writing `run.json`; model revision and staging commands are in the job request.
@@ -92,6 +93,7 @@ and H3 requirements agree on NumPy 2.4.3 and PyArrow 23.0.1.
 | `stages.reconcile` | Enabled |
 | `stages.clean.workers` | Selected with `--clean-workers` |
 | `stages.f2.workers` | Selected with `--f2-workers` |
+| `stages.shards.workers` | Selected with `--shard-workers` |
 | `stages.shards.pack_table` | Generated `out/first-training-inputs/pack_metadata.json` |
 
 Process both splits through clean, overlap, dedup/apply, F2 and the raw ledger.

@@ -74,8 +74,8 @@ def check_f1_parsers():
         raise ValueError(f"tree-sitter grammars for F1 are not downloaded: {', '.join(missing)}; run the setup step")
 
 
-def prepare(bundle, raw, tokenizer, pack_table, run_id, model_path=None, f2_workers=1, clean_workers=None):
-    for name, count in (("f2_workers", f2_workers), ("clean_workers", clean_workers)):
+def prepare(bundle, raw, tokenizer, pack_table, run_id, model_path=None, f2_workers=1, clean_workers=None, shard_workers=None):
+    for name, count in (("f2_workers", f2_workers), ("clean_workers", clean_workers), ("shard_workers", shard_workers)):
         if count is not None and (type(count) is not int or count < 1):  # None: the settings file's value stands
             raise ValueError(f"{name} must be a positive integer")
     bundle, raw, tokenizer = (Path(p).resolve() for p in (bundle, raw, tokenizer))
@@ -164,7 +164,8 @@ def prepare(bundle, raw, tokenizer, pack_table, run_id, model_path=None, f2_work
             "f2": {"pool": True, "workers": f2_workers},
             "ledger": {"raw": relative_or_absolute(raw)},
             "shards": {"tokenizer": relative_or_absolute(tokenizer), "dataset_version": DATASET_VERSION,
-                       "pack_table": relative_or_absolute(pack_table)},
+                       "pack_table": relative_or_absolute(pack_table),
+                       **({"workers": shard_workers} if shard_workers else {})},
             "reconcile": {},
         },
     }
@@ -187,12 +188,15 @@ def main():
                     help="Parts the clean stage cleans at once (about 0.5 GB each). 16 on the 32 vCPU / 64 GiB job host.")
     ap.add_argument("--f2-workers", type=int, required=True,
                     help="F2 processes (the fingerprint set is shared). 30 on the 32 vCPU job host.")
+    ap.add_argument("--shard-workers", type=int, required=True,
+                    help="Packs the shard stage writes at the same time (each part has a process of its own, 1 to 4 GB). 8 on the 32 vCPU / 64 GiB job host.")
     ap.add_argument("--run-id", required=True)
     args = ap.parse_args()
     try:
         check_f1_parsers()
         print(prepare(args.bundle, args.input_root, args.tokenizer, args.pack_table, args.run_id,
-                      f2_workers=args.f2_workers, clean_workers=args.clean_workers))
+                      f2_workers=args.f2_workers, clean_workers=args.clean_workers,
+                      shard_workers=args.shard_workers))
     except (OSError, ValueError, KeyError, TypeError) as exc:
         ap.exit(1, f"prepare_run: {exc}\n")
 
